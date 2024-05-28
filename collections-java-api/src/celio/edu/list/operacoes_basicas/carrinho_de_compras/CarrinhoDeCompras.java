@@ -10,31 +10,29 @@ public class CarrinhoDeCompras {
         this.itemCarrinho = new ArrayList<>();
     }
 
-    public void adicionarItem(String nome, double preco, int quantidade){
+    public void adicionarItem(String nome, double preco, int quantidade) {
         itemCarrinho.add(new Item(nome, preco, quantidade));
     }
 
-    public void removerItem(String nome){
+    public void removerItem(String nome) {
         List<Item> itensParaRemover = new ArrayList<>();
-        for(Item i : itemCarrinho){
-            if (i.getNome().equalsIgnoreCase(nome)){
+        for (Item i : itemCarrinho) {
+            if (i.getNome().equalsIgnoreCase(nome)) {
                 itensParaRemover.add(i);
             }
         }
         itemCarrinho.removeAll(itensParaRemover);
     }
 
-    public double calcularValorTotal(){
-        int valorTotal = 0;
-
-        for (Item i : itemCarrinho){
+    public double calcularValorTotal() {
+        double valorTotal = 0;
+        for (Item i : itemCarrinho) {
             valorTotal += i.getPreco() * i.getQuantidade();
         }
-
         return valorTotal;
     }
 
-    public void exibirItens(){
+    public void exibirItens() {
         System.out.println(itemCarrinho);
     }
 
@@ -42,17 +40,16 @@ public class CarrinhoDeCompras {
         CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
 
         System.out.println(carrinhoDeCompras.calcularValorTotal());
-        
-        carrinhoDeCompras.adicionarItem("Camisa",50, 5);
+
+        carrinhoDeCompras.adicionarItem("Camisa", 50, 5);
         carrinhoDeCompras.adicionarItem("Bermuda", 80, 4);
-        carrinhoDeCompras.adicionarItem("Calça",120, 3);
-        
+        carrinhoDeCompras.adicionarItem("Calça", 120, 3);
+
         carrinhoDeCompras.exibirItens();
         System.out.println(carrinhoDeCompras.calcularValorTotal());
-        
+
         carrinhoDeCompras.removerItem("Camisa");
         carrinhoDeCompras.exibirItens();
         System.out.println(carrinhoDeCompras.calcularValorTotal());
-        
     }
 }
